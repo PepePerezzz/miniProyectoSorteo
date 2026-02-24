@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Sorteo</title>
+    <link rel="stylesheet" href="estilos/dashboard.css">
+</head>
+<body>
+
+    <div class="card">
+        <h2>Configurar Sorteo</h2>
+        <p>Ingresa los datos del organizador para comenzar.</p>
+
+        <form action="lista_participantes.html" class="registro-form">
+            <div class="input-group">
+                <label for="organizador">Nombre del Organizador</label>
+                <input type="text" id="organizador" name="organizador" placeholder="Ej. Pepe Pérez" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="participa" name="participa">
+                <label for="participa">¿El organizador participa en el sorteo?</label>
+            </div>
+
+            <button type="submit" class="btn-primary">Continuar al Sorteo</button>
+        </form>
+    </div>
+
+</body>
+</html>
