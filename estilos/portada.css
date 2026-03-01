@@ -33,7 +33,7 @@ body {
 .logo-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Esto hace que la imagen llene el círculo sin deformarse */
+    object-fit: cover; 
 }
 
 .logo-placeholder {
