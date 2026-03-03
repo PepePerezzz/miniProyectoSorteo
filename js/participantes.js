@@ -89,3 +89,31 @@ btnSortear.addEventListener('click', () => {
 if (contenedor.children.length === 0) {
     agregarNuevoInput();
 }
+
+// Mostrar/ocultar contenedor de opciones
+  const mostrarMasBtn = document.getElementById('btn-mas');
+  const masOpciones = document.getElementById('masOpciones');
+  mostrarMasBtn.addEventListener('click', () => {
+    masOpciones.style.display = masOpciones.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Seleccionar todos los botones de opción
+  const opcionBtns = document.querySelectorAll('.btn-opcion');
+  opcionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling; 
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+
+  // Botones OK para capturar valores
+  const okBtns = document.querySelectorAll('.ok-btn');
+  okBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parent = btn.parentElement;
+      const input = parent.querySelector('input');
+      alert(`Valor ingresado: ${input.value}`);
+      input.value = ''; // limpiar input si quieres
+      parent.style.display = 'none'; // opcional: cerrar la sección
+    });
+  });

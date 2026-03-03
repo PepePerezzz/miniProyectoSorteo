@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Participantes</title>
-    <link rel="stylesheet" href="/estilos/participantes.css">
+    <link rel="stylesheet" href="../estilos/participantes.css">
+    
 </head>
 <body>
 
@@ -21,8 +22,38 @@
         <div class="controles">
             <button type="button" id="btn-agregar" class="btn-secundario">+ Agregar otro</button>
             <button type="button" id="btn-sortear" class="btn-primary">¡Realizar Sorteo!</button>
+            <button type="button" id="btn-mas" class="btn-secundario">Mostrar más</button>
         </div>
+        <div class="submenu" id="masOpciones">
+            <div class="opcion">
+                <button class="btn-opcion btn-terceario">Agregar celebración</button>
+                <div class="opcion-contenido" style="display:none; margin-top:5px;">
+                <label>Nombre de la celebración:</label>
+                <input id="nombreCelebracion" type="text" class="input-mas" style="width: auto;">
+                <button class="btn-primary">OK</button>
+                </div>
+            </div>
 
+            <div class="opcion">
+                <button class="btn-opcion btn-terceario">Agregar fecha</button>
+                <div class="opcion-contenido" style="display:none; margin-top:5px;">
+                <label>Fecha del evento:</label>
+                <input id="fechaEvento" type="date" class="input-mas">
+                <button class="btn-primary">OK</button>
+                </div>
+            </div>
+
+            <!-- Opción 3: Agregar descripción -->
+            <div class="opcion">
+                <button class="btn-opcion btn-terceario">Agregar descripción</button>
+                <div class="opcion-contenido" style="display:none; margin-top:5px;">
+                <label>¿Cuanto gastar?</label>
+                <input id="rangoGasto" type="text" class="input-mas">
+                <button class="btn-primary">OK</button>
+                </div>
+            </div>
+
+        </div>
         <div id="trash-can" class="trash-can">
             <span>Arrastra aquí para eliminar</span>
         </div>
@@ -30,6 +61,6 @@
 
     
 
-    <script src="/js/participantes.js"></script>
+    <script src="../js/participantes.js"></script>
 </body>
 </html>
