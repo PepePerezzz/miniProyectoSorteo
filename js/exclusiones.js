@@ -1,4 +1,4 @@
-const nombresGuardados = JSON.parse(localStorage.getItem('listaParticipantes')) || [];
+const nombresGuardados = JSON.parse(localStorage.getItem('listaParticipantes'));
 const selectA = document.getElementById('persona-a');
 const selectB = document.getElementById('persona-b');
 const btnAgregar = document.getElementById('btn-agregar-exclusion');
@@ -66,3 +66,47 @@ btnContinuar.addEventListener('click', () => {
 });
 
 cargarNombres();
+
+
+function realizarSorteo() {
+    let intentos = 0;
+    const MAX_INTENTOS = 500; // Para evitar bucles infinitos si es imposible
+
+    while (intentos < MAX_INTENTOS) {
+        let disponibles = [...nombresGuardados];
+        let copiaParticipantes = [...nombresGuardados];
+        let resultado = [];
+        let error = false;
+
+        // Mezclamos la lista de quienes van a recibir (disponibles)
+        disponibles.sort(() => Math.random() - 0.5);
+
+        for (let i = 0; i < copiaParticipantes.length; i++) {
+            const dador = copiaParticipantes[i];
+            const receptor = disponibles[i];
+
+            // REGLAS: 
+            // 1. No regalarse a sí mismo
+            // 2. No romper las restricciones guardadas
+            const esMismaPersona = dador === receptor;
+            const esRestringido = restricciones.some(r => r.de === dador && r.para === receptor);
+
+            if (esMismaPersona || esRestringido) {
+                error = true;
+                break; // Si falla una pareja, reiniciamos todo el sorteo
+            }
+
+            resultado.push({ de: dador, para: receptor });
+        }
+
+        if (!error) {
+            localStorage.setItem('resultadoSorteo', JSON.stringify(resultado));
+            return resultado; // ¡Sorteo exitoso!
+        }
+        intentos++;
+    }
+    alert("No se pudo generar un sorteo válido después de varios intentos. Revisa las restricciones.");
+    return null; // Si llega aquí, es que las restricciones son imposibles de cumplir
+}
+
+

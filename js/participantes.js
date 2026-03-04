@@ -79,6 +79,8 @@ btnSortear.addEventListener('click', () => {
     }
 
     //LocalStorage!!!!!!!!!!!!!!!!!!!!!!
+    if(localStorage.getItem('participa'))
+        nombres.push(localStorage.getItem('organizador'))
     localStorage.setItem('listaParticipantes', JSON.stringify(nombres));
     
     window.location.href = 'exclusiones.html';
@@ -117,3 +119,25 @@ if (contenedor.children.length === 0) {
       parent.style.display = 'none'; // opcional: cerrar la sección
     });
   });
+
+  const fecha= document.getElementById('fechaEvento');
+  const gasto = document.getElementById('rangoGasto');
+  const nombreCelebracion = document.getElementById('nombreCelebracion');
+  function guardarFecha() {
+    localStorage.setItem('fechaEvento', fecha.value);
+    alert(`Fecha guardada: ${fecha.value}`);
+  }
+
+  function guardarGasto() {
+    localStorage.setItem('rangoGasto', gasto.value);
+    alert(`Rango de gasto guardado: ${gasto.value}`);
+  }
+
+  function guardarCelebracion() {
+    localStorage.setItem('nombreCelebracion', nombreCelebracion.value);
+    alert(`Nombre de celebración guardado: ${nombreCelebracion.value}`);
+  }
+
+  document.getElementById('guardarFecha').addEventListener('click', guardarFecha);
+  document.getElementById('guardarGasto').addEventListener('click', guardarGasto);
+  document.getElementById('guardarCelebracion').addEventListener('click', guardarCelebracion);

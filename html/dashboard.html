@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Sorteo</title>
-    <link rel="stylesheet" href="../estilos/dashboard.css">
+    <link rel="stylesheet" href="../estilos/dashboard.css">|
 </head>
 <body>
 
@@ -23,10 +23,20 @@
                 <label for="participa">El organizador participa en el sorteo?</label>
             </div>
 
-            <button type="submit" class="btn-primary">Continuar al Sorteo</button>
+            <button type="submit" class="btn-primary" onclick="guardarDatos()">Continuar al Sorteo</button>
 
         </form>
     </div>
 
 </body>
+<script>
+    const nombreOrganizador=document.getElementById('organizador');
+    function guardarDatos() {
+        const organizador = nombreOrganizador.value;
+        const participa = document.getElementById('participa').checked;
+
+        localStorage.setItem('organizador', organizador);
+        localStorage.setItem('participa', participa);
+    }
+</script>
 </html>
