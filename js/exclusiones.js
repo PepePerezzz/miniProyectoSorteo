@@ -5,8 +5,7 @@ const btnAgregar = document.getElementById('btn-agregar-exclusion');
 const btnContinuar = document.getElementById('btn-continuar');
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
-let restricciones = [];
-
+let restricciones = JSON.parse(localStorage.getItem('restriccionesSorteo')) || [];
 // Función mágica para alertas de Bootstrap
 const appendAlert = (message, type) => {
   const wrapper = document.createElement('div');
