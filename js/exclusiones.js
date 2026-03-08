@@ -1,4 +1,7 @@
-const nombresGuardados = JSON.parse(localStorage.getItem('listaParticipantes'));
+const nombresGuardados = JSON.parse(localStorage.getItem('listaParticipantes')) || [];
+const organizador = localStorage.getItem('organizador');
+const organizadorParticipa = localStorage.getItem('participa') === "true";
+
 const selectA = document.getElementById('persona-a');
 const selectB = document.getElementById('persona-b');
 const btnAgregar = document.getElementById('btn-agregar-exclusion');
@@ -6,62 +9,86 @@ const btnContinuar = document.getElementById('btn-continuar');
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
 let restricciones = JSON.parse(localStorage.getItem('restriccionesSorteo')) || [];
-// Función mágica para alertas de Bootstrap
+
 const appendAlert = (message, type) => {
   const wrapper = document.createElement('div');
-  wrapper.innerHTML = [
-    `<div class="alert alert-${type} alert-dismissible fade show" role="alert" style="font-size: 0.8rem; text-align: left;">`,
-    `   <div>${message}</div>`,
-    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-    '</div>'
-  ].join('');
+
+  wrapper.innerHTML = `
+    <div class="alert alert-${type} alert-dismissible fade show" role="alert" style="font-size:0.8rem">
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  `;
 
   alertPlaceholder.append(wrapper);
-  
-  // Auto-cerrar después de 3 segundos
+
   setTimeout(() => {
     const alert = bootstrap.Alert.getOrCreateInstance(wrapper.firstElementChild);
     alert.close();
   }, 3000);
-}
+};
 
 function cargarNombres() {
-    if (nombresGuardados.length === 0) {
-        appendAlert("No hay participantes. Regresa.", "danger");
+
+    let lista = [...nombresGuardados];
+
+    if (!organizadorParticipa && organizador) {
+        lista = lista.filter(n => n !== organizador);
+    }
+
+    if (lista.length === 0) {
+        appendAlert("No hay participantes.", "danger");
         return;
     }
-    nombresGuardados.forEach(nombre => {
+
+    lista.forEach(nombre => {
+
         const opcionA = new Option(nombre, nombre);
         const opcionB = new Option(nombre, nombre);
+
         selectA.add(opcionA);
         selectB.add(opcionB);
+
     });
+
 }
 
 btnAgregar.addEventListener('click', () => {
+
     const p1 = selectA.value;
     const p2 = selectB.value;
 
     if (!p1 || !p2) {
-        appendAlert("Selecciona a dos personas primero.", "warning");
+        appendAlert("Selecciona dos personas.", "warning");
         return;
     }
 
     if (p1 === p2) {
-        appendAlert("¡No puede ser la misma persona!", "danger");
+        appendAlert("No puede ser la misma persona.", "danger");
+        return;
+    }
+
+    if (restricciones.some(r => r.de === p1 && r.para === p2)) {
+        appendAlert("Esa restricción ya existe.", "warning");
         return;
     }
 
     restricciones.push({ de: p1, para: p2 });
-    appendAlert(`Restricción guardada: ${p1} ➔ ${p2}`, "success");
-    
-    selectA.selectedIndex = 0;
-    selectB.selectedIndex = 0;
+
+    appendAlert(`Restricción guardada: ${p1} ➜ ${p2}`, "success");
+
 });
 
 btnContinuar.addEventListener('click', () => {
+
     localStorage.setItem('restriccionesSorteo', JSON.stringify(restricciones));
-    window.location.href = 'resultado.html'; 
+
+    const resultado = realizarSorteo();
+
+    if (resultado) {
+        window.location.href = "resultado.html";
+    }
+
 });
 
 cargarNombres();
@@ -100,12 +127,10 @@ function realizarSorteo() {
 
         if (!error) {
             localStorage.setItem('resultadoSorteo', JSON.stringify(resultado));
-            return resultado; // ¡Sorteo exitoso!
+            return resultado;
         }
         intentos++;
     }
     alert("No se pudo generar un sorteo válido después de varios intentos. Revisa las restricciones.");
     return null; // Si llega aquí, es que las restricciones son imposibles de cumplir
 }
-
-

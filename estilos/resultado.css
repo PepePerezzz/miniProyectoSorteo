@@ -1,0 +1,132 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(270deg, #3b0000, #0b0b0b, #3b0000);
+    background-size: 600% 600%;
+    animation: lucesCasino 8s ease infinite;
+}
+
+@keyframes lucesCasino {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.titulo-principal {
+    color: #ffd700;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 18px rgba(255, 215, 0, 0.4);
+}
+
+
+.casino-card {
+    background: linear-gradient(145deg, #1c1c1c, #111);
+    border: 2px solid #c9a227;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(201, 162, 39, 0.3), 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.section-title {
+    color: #ffd700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.separator {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c9a227, transparent);
+    margin: 14px 0 18px;
+    opacity: 1;
+}
+
+
+.casino-list .list-group-item {
+    background: transparent;
+    border-color: #2a2a2a;
+    color: #d0d0d0;
+    padding: 10px 0;
+}
+
+.casino-list .list-group-item:last-child {
+    border-bottom: none;
+}
+
+.casino-list .list-group-item strong {
+    color: #fff;
+}
+
+.dato-label {
+    color: #888;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    min-width: 100px;
+}
+
+
+.gold-badge {
+    font-size: 0.72rem;
+    background: linear-gradient(135deg, #ffd700, #c9a227);
+    color: #000;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.tabla-casino {
+    color: #d0d0d0;
+    margin-bottom: 0;
+}
+
+.tabla-casino thead th {
+    color: #ffd700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #c9a227;
+    background: transparent;
+    font-weight: 600;
+}
+
+.tabla-casino tbody tr {
+    border-bottom: 1px solid #222;
+}
+
+.tabla-casino tbody tr:hover td {
+    background: rgba(201, 162, 39, 0.07);
+    color: #fff;
+}
+
+.tabla-casino tbody td {
+    background: transparent;
+    color: #d0d0d0;
+    border-color: #222;
+}
+
+
+.btn-casino {
+    background: linear-gradient(145deg, #b30000, #ff1a1a);
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-casino:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.75);
+    background: linear-gradient(145deg, #cc0000, #ff3333);
+}

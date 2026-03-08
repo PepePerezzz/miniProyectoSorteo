@@ -13,10 +13,12 @@ body {
 
 .card {
     background: linear-gradient(145deg, #1c1c1c, #111);
+    color: #fff;
     padding: 2.5rem;
     border-radius: 18px;
     text-align: center;
-    width: 380px;
+    /* width: 380px; */
+    width: 100%;
     border: 2px solid #c9a227;
     box-shadow: 0 0 25px rgba(201,162,39,0.4), 0 15px 40px rgba(0,0,0,0.7);
 }
@@ -79,7 +81,7 @@ h3 {
     font-size: 0.95rem;
 }
 
-.badge {
+.num-badge {
     font-size: 0.75rem;
     background: linear-gradient(135deg, #ffd700, #c9a227);
     color: #000;

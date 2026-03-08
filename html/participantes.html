@@ -4,63 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Participantes</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../estilos/participantes.css">
     
 </head>
 <body>
 
-    <div class="card">
-        <h2>Lista de Participantes</h2>
-        <p>Agrega a todas las personas que entrarán al sorteo.</p>
+<div class="container vh-100 d-flex align-items-center">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-md-8 col-lg-6">
 
-        <div id="contenedor-participantes" class="lista-inputs">
-            <div class="input-group">
-                <input type="text" placeholder="Nombre del participante" class="input-nombre">
-            </div>
-        </div>
+            <div class="card">
+                <h2>Lista de Participantes</h2>
+                <p>Agrega a todas las personas que entrarán al sorteo.</p>
 
-        <div class="controles">
-            <button type="button" id="btn-agregar" class="btn-secundario">+ Agregar otro</button>
-            <button type="button" id="btn-sortear" class="btn-primary">¡Realizar Sorteo!</button>
-            <button type="button" id="btn-mas" class="btn-secundario">Mostrar más</button>
-        </div>
-        <div class="submenu" id="masOpciones">
-            <div class="opcion">
-                <button class="btn-opcion btn-terceario">Agregar celebración</button>
-                <div class="opcion-contenido" style="display:none; margin-top:5px;">
-                <label>Nombre de la celebración:<br></label>
-                <input id="nombreCelebracion" type="text" class="input-mas">
-                <button class="btn-primary">OK</button>
+                <div id="contenedor-participantes" class="lista-inputs">
+                    <div class="input-group">
+                        <input type="text" placeholder="Nombre del participante" class="input-nombre">
+                    </div>
                 </div>
-            </div>
 
-            <div class="opcion">
-                <button class="btn-opcion btn-terceario">Agregar fecha</button>
-                <div class="opcion-contenido" style="display:none; margin-top:5px;">
-                <label>Fecha del evento:</label>
-                <input id="fechaEvento" type="date" class="input-mas">
-                <button class="btn-primary">OK</button>
+                <div class="controles">
+                    <button type="button" id="btn-agregar" class="btn-secundario">+ Agregar otro</button>
+                    <button type="button" id="btn-sortear" class="btn-primary">Coninuar con el sorteo</button>
+                    <button type="button" id="btn-mas" class="btn-secundario">Mostrar más</button>
                 </div>
-            </div>
 
-            <!-- Opción 3: Agregar descripción -->
-            <div class="opcion">
-                <button class="btn-opcion btn-terceario">Agregar gasto</button>
-                <div class="opcion-contenido" style="display:none; margin-top:5px;">
-                <label>¿Cuanto gastar?</label>
-                <input id="rangoGasto" type="text" class="input-mas">
-                <button class="btn-primary">OK</button>
+                <div class="submenu" id="masOpciones">
+                    <div class="opcion">
+                    <button class="btn-opcion btn-terceario">Agregar celebración</button>
+                    <div class="opcion-contenido" style="display:none; margin-top:5px;">
+                        <label>Nombre de la celebración:<br></label>
+                        <input id="nombreCelebracion" type="text" class="input-mas">
+                        <button class="btn-primary" onclick="guardarCelebracion();">OK</button>
+                    </div>
                 </div>
+
+                <div class="opcion">
+                    <button class="btn-opcion btn-terceario">Agregar fecha</button>
+                    <div class="opcion-contenido" style="display:none; margin-top:5px;">
+                        <label>Fecha del evento:</label>
+                        <input id="fechaEvento" type="date" class="input-mas">
+                        <button class="btn-primary" onclick="guardarFecha();">OK</button>
+                    </div>
+                </div>
+
+                <div class="opcion">
+                    <button class="btn-opcion btn-terceario">Agregar gasto</button>
+                    <div class="opcion-contenido" style="display:none; margin-top:5px;">
+                        <label>¿Cuanto gastar?</label>
+                        <input id="rangoGasto" type="text" class="input-mas">
+                        <button class="btn-primary" onclick="guardarGasto()">OK</button>
+                    </div>
+                </div>
+                     
+                </div>
+
+                <div id="trash-can" class="trash-can">
+                    <span>Arrastra aquí para eliminar</span>
+                </div>
+
             </div>
 
-        </div>
-        <div id="trash-can" class="trash-can">
-            <span>Arrastra aquí para eliminar</span>
         </div>
     </div>
+</div>
 
-    
+<script src="../js/participantes.js"></script>
 
-    <script src="../js/participantes.js"></script>
 </body>
 </html>

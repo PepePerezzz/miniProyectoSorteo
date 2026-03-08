@@ -4,39 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Sorteo</title>
-    <link rel="stylesheet" href="../estilos/dashboard.css">|
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../estilos/dashboard.css">
+    <script src="../js/dasboard.js" defer></script>
 </head>
 <body>
 
-    <div class="card">
-        <h2>Configurar Sorteo</h2>
-        <p>Ingresa los datos del organizador para comenzar.</p>
+<div class="container vh-100 d-flex align-items-center">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-md-8 col-lg-5">
 
-        <form action="../html/participantes.html" class="registro-form">
-            <div class="input-group">
-                <label for="organizador">Nombre del Organizador</label>
-                <input type="text" id="organizador" name="organizador" placeholder="Ej. Pepe Pérez" required>
+            <div class="card">
+                <h2>Configurar Sorteo</h2>
+                <p>Ingresa los datos del organizador para comenzar.</p>
+
+                <form action="../html/participantes.html" class="registro-form">
+                    <div class="input-group">
+                        <label for="organizador">Nombre del Organizador</label>
+                        <input type="text" id="organizador" name="organizador" placeholder="Ej. Pepe Pérez" required>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="participa" name="participa">
+                        <label for="participa">El organizador participa en el sorteo?</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" onclick="guardarDatos()">Continuar al Sorteo</button>
+
+                </form>
             </div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="participa" name="participa">
-                <label for="participa">El organizador participa en el sorteo?</label>
-            </div>
-
-            <button type="submit" class="btn-primary" onclick="guardarDatos()">Continuar al Sorteo</button>
-
-        </form>
+        </div>
     </div>
+</div>
 
 </body>
-<script>
-    const nombreOrganizador=document.getElementById('organizador');
-    function guardarDatos() {
-        const organizador = nombreOrganizador.value;
-        const participa = document.getElementById('participa').checked;
-
-        localStorage.setItem('organizador', organizador);
-        localStorage.setItem('participa', participa);
-    }
-</script>
 </html>

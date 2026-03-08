@@ -78,11 +78,21 @@ btnSortear.addEventListener('click', () => {
         return;
     }
 
-    //LocalStorage!!!!!!!!!!!!!!!!!!!!!!
-    if(localStorage.getItem('participa'))
-        nombres.push(localStorage.getItem('organizador'))
+    // GUARDAR DATOS DEL EVENTO AUTOMATICAMENTE
+    localStorage.setItem('fechaEvento', fecha.value);
+    localStorage.setItem('rangoGasto', gasto.value);
+    localStorage.setItem('nombreCelebracion', nombreCelebracion.value);
+
+    // PARTICIPANTES
+    const organizador = localStorage.getItem('organizador');
+    const participa = localStorage.getItem('participa') === "true";
+
+    if (participa && organizador) {
+        nombres.push(organizador);
+    }
+
     localStorage.setItem('listaParticipantes', JSON.stringify(nombres));
-    
+
     window.location.href = 'exclusiones.html';
 });
 
@@ -132,7 +142,7 @@ if (contenedor.children.length === 0) {
     localStorage.setItem('rangoGasto', gasto.value);
     alert(`Rango de gasto guardado: ${gasto.value}`);
   }
-
+if(localStorage.getItem('participa'))
   function guardarCelebracion() {
     localStorage.setItem('nombreCelebracion', nombreCelebracion.value);
     alert(`Nombre de celebración guardado: ${nombreCelebracion.value}`);
