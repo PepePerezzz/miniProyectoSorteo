@@ -84,5 +84,5 @@ resultados.forEach((res, index) => {
 
 document.getElementById("btnLimpiar").addEventListener("click", function () {
     localStorage.clear();
-    window.location.href = "../html/index.html";
+    window.location.href = "../index.html";
 });
